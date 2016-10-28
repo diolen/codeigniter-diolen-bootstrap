@@ -56,4 +56,29 @@ class Users_model extends CI_Model
 	    $this->db->delete($this->table_name);
 	}
 	
+	public function login()
+	{
+	    $CI = & get_instance();
+	    
+	    $email = $CI->input->post('user_email');
+	    $pass = md5($CI->input->post('user_pass'));
+	    
+	    $this->db->where('user_email', $email);
+	    $this->db->where('user_pass', $pass);
+	    $query = $this->db->get($this->table_name);
+
+	    if($query->num_rows() > 0) {
+	        $user = $query->row();
+	        
+	        $this->session->set_userdata('user_email', $user->user_email);
+	        $this->session->set_userdata('user_name', $user->user_name);
+	        $this->session->set_userdata('user_lastname', $user->user_lastname);
+	        $this->session->set_userdata('is_logged', 'logged_in');
+
+	        return TRUE;
+	    }
+	    
+	    return FALSE;
+	}
+	
 }

@@ -14,7 +14,7 @@
                         <tr>
                             <th>Nombre completo</th>
                             <th>Email</th>
-                            <th><a href="/users/add">Agregar usuario</a></th>
+                            <th>&nbsp;</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -27,9 +27,11 @@
                                 </td>
                                 <td><?php echo $user->user_email ?></td>
                                 <td>
+                                    <?php if($user->user_email != 'admin@admin.com'): ?>
                                     <a href="javascript:void(0)" title="Eliminar" data-toggle="modal" data-target="#user_modal" data-user="<?php echo $user->id ?>">
                                         <span class="glyphicon glyphicon-trash"></span>
                                     </a>
+                                    <?php endif; ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

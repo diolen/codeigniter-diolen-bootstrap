@@ -24,3 +24,13 @@
 </head>
 
 <body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-right">
+        <?php if($this->session->userdata('is_logged') == 'logged_in'): ?>
+          <a href="/users/add">agregar usuario</a> | 
+          <a href="/auth/logout">logout</a>
+        <?php endif; ?>
+      </div>
+    </div>
+  </div>

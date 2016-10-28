@@ -6,17 +6,32 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <form class="form-horizontal">
+            <?php echo $this->session->flashdata('message') ?>
+            <?php echo form_open('auth/login', ['class'=>'form-horizontal']) ?>
                 <div class="form-group">
                     <label for="user_email" class="col-sm-2 control-label">Email</label>
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" id="user_email" placeholder="Email">
+                        <?php echo form_input([
+                            'name' => 'user_email',
+                            'id' => 'user_email',
+                            'value' => set_value('user_email'),
+                            'class' => 'form-control',
+                            'placeholder' => 'Email'                         
+                        ]) ?>
+                        <?php echo form_error('user_email'); ?>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="user_pass" class="col-sm-2 control-label">Contraseña</label>
                     <div class="col-sm-10">
-                        <input type="password" class="form-control" id="user_pass" placeholder="Contraseña">
+                        <?php echo form_password([
+                            'name' => 'user_pass',
+                            'id' => 'user_pass',
+                            'value' => set_value('user_pass'),
+                            'class' => 'form-control',
+                            'placeholder' => 'Max 12 characteres'                         
+                        ]) ?>
+                        <?php echo form_error('user_pass'); ?>
                     </div>
                 </div>
                 <div class="form-group">
@@ -24,7 +39,7 @@
                         <button type="submit" class="btn btn-default">Enviar</button>
                     </div>
                 </div>
-            </form>
+            <?php echo form_close() ?>
         </div>
     </div>
 </div>

@@ -45,6 +45,9 @@
                         <?php echo form_error('user_email'); ?>
                     </div>
                 </div>
+                
+                <?php if(!isset($user->user_email) || (isset($user->user_email) && $user->user_email != 'admin@admin.com')): ?>
+                
                 <div class="form-group">
                     <label for="user_pass" class="col-sm-2 control-label">Contraseña</label>
                     <div class="col-sm-10">
@@ -72,6 +75,8 @@
                         <?php echo form_error('user_confirmpass'); ?>
                     </div>
                 </div>
+                
+                <?php endif; ?>
                 
                 <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">

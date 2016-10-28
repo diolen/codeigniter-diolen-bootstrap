@@ -20,15 +20,20 @@ class MY_Controller extends CI_Controller
     
     public function is_logged()
     {
-        $white_list = [
+        $before_login = [
+            'login',
+            'add'
+        ];
+
+        $after_login = [
             'login'
         ];
 
-        if(!in_array($this->action, $white_list) && $this->session->userdata('is_logged') != 'logged_in') {
+        if(!in_array($this->action, $before_login) && $this->session->userdata('is_logged') != 'logged_in') {
             redirect('/auth/login');
         }
         
-        if(in_array($this->action, $white_list) && $this->session->userdata('is_logged') == 'logged_in') {
+        if(in_array($this->action, $after_login) && $this->session->userdata('is_logged') == 'logged_in') {
             redirect(base_url());
         }
     }

@@ -22,8 +22,8 @@ class Users extends MY_Controller
 	    $this->data['readonly'] = '';
 	    $this->data['hidden'] = ['action' => $this->data['action']];
 	    
-        $this->form_validation->set_rules('user_name', 'Nombre', 'trim|required|min_length[5]|max_length[20]');
-        $this->form_validation->set_rules('user_lastname', 'Apellido', 'trim|required|min_length[5]|max_length[30]');
+        $this->form_validation->set_rules('user_name', 'Nombre', 'trim|required|min_length[3]|max_length[20]');
+        $this->form_validation->set_rules('user_lastname', 'Apellido', 'trim|required|min_length[3]|max_length[30]');
         $this->form_validation->set_rules('user_email', 'Email', 'trim|required|valid_email|is_unique[users.user_email]');
         $this->form_validation->set_rules('user_pass', 'Contraseña', 'trim|required|min_length[5]|max_length[12]');
         $this->form_validation->set_rules('user_confirmpass', 'Confirmar', 'trim|required|matches[user_pass]');            
@@ -47,8 +47,8 @@ class Users extends MY_Controller
 	    $this->data['readonly'] = 'readonly';
 	    $this->data['hidden'] = ['action' => $this->data['action'], 'id' => $id];
 	    
-        $this->form_validation->set_rules('user_name', 'Nombre', 'trim|required|min_length[5]|max_length[20]');
-        $this->form_validation->set_rules('user_lastname', 'Apellido', 'trim|required|min_length[5]|max_length[30]');
+        $this->form_validation->set_rules('user_name', 'Nombre', 'trim|required|min_length[3]|max_length[20]');
+        $this->form_validation->set_rules('user_lastname', 'Apellido', 'trim|required|min_length[3]|max_length[30]');
 
         if($this->input->post('user_pass') != "") {
             $this->form_validation->set_rules('user_pass', 'Contraseña', 'trim|required|min_length[5]|max_length[12]');
